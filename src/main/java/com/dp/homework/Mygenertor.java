@@ -60,7 +60,7 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
             // 自定义实体父类
 //         strategy.setSuperEntityClass("hello.entity.BaseEntity");
             // 自定义实体，公共字段
-            strategy.setSuperEntityColumns(new String[]{"id"});
+//            strategy.setSuperEntityColumns(new String[]{"id"});
             // 自定义 mapper 父类
             // strategy.setSuperMapperClass("com.fcs.demo.TestMapper");
             // 自定义 service 父类

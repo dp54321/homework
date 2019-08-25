@@ -1,7 +1,9 @@
 package com.dp.homework.service;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.dp.homework.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.dp.homework.shiro.AccountProfile;
 
 /**
  * <p>
@@ -13,4 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface UserService extends IService<User> {
 
+    R saveUser(User user);
+
+    AccountProfile login(String email, String password);
 }

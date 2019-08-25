@@ -1,6 +1,8 @@
 package com.dp.homework.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -15,6 +17,12 @@ import java.io.Serializable;
 public class Post extends Model<Post> {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键ID
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 标题
@@ -83,6 +91,14 @@ public class Post extends Model<Post> {
      */
     private LocalDateTime modified;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -198,13 +214,14 @@ public class Post extends Model<Post> {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
     @Override
     public String toString() {
         return "Post{" +
-        "title=" + title +
+        "id=" + id +
+        ", title=" + title +
         ", content=" + content +
         ", editMode=" + editMode +
         ", categoryId=" + categoryId +

@@ -6,3 +6,9 @@ spring:
     url: jdbc:mysql://localhost:3306/homework?characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: root
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.dp.homework.mapper
+  mapper-locations: classpath:mapper/*.xml
+#mybatis配置

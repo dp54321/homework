@@ -17,4 +17,24 @@ public class IndexController {
         log.info("-------------------------------->这是首页");
         return "index";
     }
+
+    @GetMapping("/showlogin")
+    public String showLogin() {
+        log.info("-------------------------------->这是首页");
+        return "auth/login";
+    }
+
+
+    @GetMapping("/showregister")
+    public String showRegister() {
+        log.info("-------------------------------->这是首页");
+        return "auth/register";
+    }
+
+    @GetMapping("/showcenter")
+    public String showCenter() {
+        log.info("-------------------------------->这是首页");
+        return "user/center";
+    }
+
 }

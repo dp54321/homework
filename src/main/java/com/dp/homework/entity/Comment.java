@@ -1,6 +1,8 @@
 package com.dp.homework.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -15,6 +17,12 @@ import java.io.Serializable;
 public class Comment extends Model<Comment> {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键ID
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 评论的内容
@@ -66,6 +74,14 @@ public class Comment extends Model<Comment> {
      */
     private LocalDateTime modified;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getContent() {
         return content;
@@ -149,13 +165,14 @@ public class Comment extends Model<Comment> {
 
     @Override
     protected Serializable pkVal() {
-        return null;
+        return this.id;
     }
 
     @Override
     public String toString() {
         return "Comment{" +
-        "content=" + content +
+        "id=" + id +
+        ", content=" + content +
         ", parentId=" + parentId +
         ", postId=" + postId +
         ", userId=" + userId +
