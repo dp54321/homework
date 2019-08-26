@@ -2,6 +2,7 @@ package com.dp.homework.service.impl;
 
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.dp.homework.entity.User;
 import com.dp.homework.mapper.UserMapper;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -28,7 +31,21 @@ import java.util.Date;
  */
 @Slf4j
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implements UserService {
+
+
+    @Override
+    public void join(Map<String, Object> map, String field) {
+        Map<String,Object> joinColums = new HashMap<>();
+        //字段的值
+        String linkFieldValue = map.get(field).toString();
+        User u = this.getById(linkFieldValue);
+        joinColums.put("username",u.getUsername());
+        joinColums.put("email",u.getEmail());
+        joinColums.put("avatar",u.getAvatar());
+        joinColums.put("id",u.getId());
+        map.put("author",joinColums);
+    }
 
     @Override
     @Transactional
